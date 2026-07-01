@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupremium Creative™</title>
+    
+    <!-- Fonts: Roboto for body copy, Barlow Condensed (bold weights) for headings, Oleo Script for logo script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Oleo+Script:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for modern layout design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#FFAF00', /* Global gold theme set strictly to #FFAF00 */
+                        dark: '#111111',
+                        charcoal: '#1A1A1A',
+                        accentRed: '#8C1C1C'
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        oswald: ['Barlow Condensed', 'sans-serif'],
+                        logo: ['Oleo Script', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Force all Barlow Condensed (font-oswald class) elements to be bold */
+        .font-oswald {
+            font-family: 'Barlow Condensed', sans-serif !important;
+            font-weight: 800 !important; /* Bold condensed look */
+            letter-spacing: 0.05em;
+        }
+
+        /* Continuous seamless scrolling keyframes */
+        @keyframes marquee-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Scroller classes locked permanently to counter-direction default rules */
+        .scroller-left {
+            display: flex;
+            width: max-content;
+            animation: marquee-left 25s linear infinite;
+        }
+
+        .scroller-right {
+            display: flex;
+            width: max-content;
+            animation: marquee-right 25s linear infinite;
+        }
+
+        /* Permanent sleek normal speed duration */
+        .speed-normal { 
+            animation-duration: 25s !important; 
+        }
+
+        /* Elegant Tombstone image clipping matching video screen recording */
+        .tombstone-left {
+            border-radius: 120px 120px 20px 120px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .tombstone-right {
+            border-radius: 120px 120px 120px 20px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tombstone-left:hover, .tombstone-right:hover {
+            transform: scale(1.025);
+            filter: brightness(1.1);
+            box-shadow: 0 20px 40px rgba(255, 175, 0, 0.15);
+        }
+
+        /* Upward Arching Overlaps (The Curve Trick) from video */
+        .arch-curve-top {
+            border-radius: 50% 50% 0 0 / 8vw 8vw 0 0;
+            margin-top: -8vw;
+            padding-top: 10vw;
+            position: relative;
+            z-index: 20;
+            overflow: hidden; /* Clips absolute overlays/backgrounds to the curve, avoiding black corners */
+            box-shadow: 0 -2px 0 1px #000000; /* Resolves sub-pixel / anti-aliasing bleed gaps on curved borders */
+        }
+
+        /* Glowing text effect */
+        .text-glow {
+            text-shadow: 0 0 12px rgba(255, 175, 0, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased selection:bg-gold selection:text-black">
+
+    <!-- Navigation Overlay -->
+    <header class="absolute top-0 left-0 w-full z-40 px-6 md:px-12 py-8 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+        <nav class="flex gap-8 text-xs md:text-sm font-oswald uppercase tracking-[0.2em] font-extrabold">
+            <a href="#about" class="text-white hover:text-gold transition-colors duration-300">About</a>
+            <a href="#portfolio" class="text-white hover:text-gold transition-colors duration-300">Portfolio</a>
+            <a href="#contact" class="text-white hover:text-gold transition-colors duration-300">Contact</a>
+        </nav>
+        
+        <div class="flex gap-5 items-center">
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/dupremiumcreative/" target="_blank" class="text-white hover:text-gold transition-colors duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <!-- Email Link -->
+            <a href="mailto:contact@dupremium.com" class="text-white hover:text-gold transition-colors duration-300 transform hover:scale-110" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-screen flex items-center justify-center overflow-hidden z-10 bg-black">
+        <!-- Background: Two parents kissing their son at his wedding -->
+        <div class="absolute inset-0">
+            <img src="images/hero-wedding.jpg" 
+                 alt="Dupremium Creative Hero" 
+                 class="w-full h-full object-cover opacity-100 scale-105 transition-all duration-1000"
+                 id="heroImage"
+                 onerror="this.onerror=null; this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/419bb780-3d69-4a8d-8d39-22530a0aa583/DSC06800.jpg?format=2500w'">
+            <!-- Dynamic Dark Overlay Gradients (seamlessly fades to pure solid black at bottom, very soft at top for header contrast) -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/15"></div>
+        </div>
+
+        <!-- Centered High-Resolution 3D Gold Logo Image -->
+        <div class="relative z-10 flex items-center justify-center text-center mt-12 animate-fade-in px-6 select-none max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] xl:max-w-[50%] mx-auto transform hover:scale-[1.03] transition-all duration-700">
+            <img src="images/Dupremium_Creative_Logo_Mk3_3D_Gold.png?format=1500w" 
+                 alt="Dupremium Creative™ 3D Gold Logo" 
+                 class="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.95)] filter brightness-[1.05]"
+                 onerror="this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/098b2fcf-041b-4fcb-9175-92b0c1b24756/Dupremium_Creative_Logo_Mk3_3D_Gold.png?format=1500w'">
+        </div>
+
+        <!-- Elegant mouse scroll hint -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-gold transition-colors duration-300">
+            <span class="text-[10px] uppercase tracking-[0.3em] font-oswald font-extrabold text-white">Scroll</span>
+            <div class="w-5 h-8 border border-white/30 rounded-full flex justify-center p-1">
+                <div class="w-1 h-2 bg-gold rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section (No top border, blends seamlessly with the hero fade-out) -->
+    <section id="about" class="relative bg-black w-full pt-8 pb-16 md:pt-12 md:pb-24 z-15">
+        <div class="relative max-w-7xl mx-auto px-6 h-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+            
+            <!-- Left Portrait Image (Custom tombstone contour frame, border removed) -->
+            <div class="w-full sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] aspect-[3/4] relative z-10 mx-auto lg:mx-0">
+                <img src="images/portrait-male.jpg" 
+                     alt="Dupremium Creative Studio Portrait Left" 
+                     class="w-full h-full object-cover tombstone-left shadow-2xl"
+                     onerror="this.onerror=null; this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/d89a0333-3703-4883-97bf-b02bd1631d94/Dupremium+Portrait+Photography+Male.jpg?format=1500w'">
+            </div>
+            
+            <!-- Center Premium Statement Overlay -->
+            <div class="relative z-30 max-w-2xl text-center px-4 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 pointer-events-none">
+                <h2 class="text-2xl sm:text-3xl md:text-[2.6rem] font-oswald text-white leading-normal uppercase tracking-wide drop-shadow-[0_10px_20px_rgba(0,0,0,0.95)] font-extrabold">
+                    SPECIALIZING IN PHOTOGRAPHY, <br>
+                    <span class="text-gold font-extrabold text-glow">DUPREMIUM CREATIVE™</span> IS A CREATIVE <br>
+                    SOLUTION BASED IN THE HEART AND SOUL OF <br>
+                    <span class="text-gold font-extrabold text-glow">AUSTIN, TEXAS.</span>
+                </h2>
+            </div>
+            
+            <!-- Right Portrait Image (Custom offset tombstone frame, border removed) -->
+            <div class="w-full sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] aspect-[3/4] relative z-10 mx-auto lg:mx-0 lg:mt-32">
+                <img src="images/portrait-female.jpg" 
+                     alt="Dupremium Creative Studio Portrait Right" 
+                     class="w-full h-full object-cover tombstone-right shadow-2xl"
+                     onerror="this.onerror=null; this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/f3e1edd0-a593-4edd-bb20-65ebe0f20cc3/Dupremium+Portrait+Photography+Female.jpg?format=1500w'">
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Marquee Banner 1 (Locked permanently to Right Scroll direction) -->
+    <div class="marquee-container relative z-20 bg-black border-y-2 border-gold py-4 overflow-hidden">
+        <div class="scroller-right speed-normal text-white font-oswald text-sm md:text-lg tracking-[0.25em] uppercase font-bold">
+            <span class="px-4 flex items-center gap-4">
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+            </span>
+            <span class="px-4 flex items-center gap-4">
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+                <span class="text-gold font-bold">▼</span> • View Portfolio • <span class="text-gold font-bold">▼</span> • Scroll For More •
+            </span>
+        </div>
+    </div>
+
+    <!-- Category Selector Section (Acoustic audio cues removed) -->
+    <section id="portfolio" class="bg-black py-20 md:py-32 z-15 relative">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="flex flex-wrap justify-center items-center gap-x-6 gap-y-6 text-3xl sm:text-4xl md:text-6xl font-oswald font-extrabold text-white tracking-widest">
+                <span class="hover:text-gold transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95">PEOPLE</span>
+                <span class="text-gold text-2xl md:text-4xl font-light">/</span>
+                <span class="hover:text-gold transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95">TRAVEL</span>
+                <span class="text-gold text-2xl md:text-4xl font-light">/</span>
+                <span class="hover:text-gold transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95">LANDSCAPE</span>
+                <span class="text-gold text-2xl md:text-4xl font-light">/</span>
+                <span class="hover:text-gold transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95">ART & DESIGN</span>
+            </h3>
+        </div>
+    </section>
+
+    <!-- Marquee Banner 2 (Locked permanently to Left Scroll direction) -->
+    <div class="marquee-container relative z-20 bg-black border-y-2 border-gold py-4 overflow-hidden">
+        <div class="scroller-left speed-normal text-white font-oswald text-sm md:text-lg tracking-[0.25em] uppercase font-bold">
+            <span class="px-4 flex items-center gap-4">
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+            </span>
+            <span class="px-4 flex items-center gap-4">
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+                <span class="text-gold font-bold">▼</span> • Be Premium • <span class="text-gold font-bold">▼</span> • Do Premium • <span class="text-gold font-bold">▼</span> • Dupremium •
+            </span>
+        </div>
+    </div>
+
+    <!-- Image Section 1: Portrait of Family Affection -->
+    <section class="relative w-full h-[85vh] md:h-[100vh] z-10 flex items-end justify-center pb-[3vw] overflow-hidden">
+        
+        <!-- Isolated Background Layer with natural styling (brightness filter removed) -->
+        <div class="absolute inset-0 bg-cover bg-no-repeat" 
+             style="background-image: url('images/quote-girlsmiling.jpg'); background-position: center 10%; background-attachment: scroll;"
+             onerror="this.src='https://placehold.co/1920x1080/222/fff?text=Family+Portrait+Section'">
+        </div>
+        
+        <!-- Restrict the gradient strictly to the bottom 45% of the section to keep her face, eyes, and glasses 100% bright and clear with no dimming -->
+        <div class="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black to-transparent"></div>
+        
+        <!-- Floating Quote Box (Border removed) -->
+        <div class="relative z-30 w-[90%] max-w-3xl bg-black/90 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-3xl text-center transform hover:scale-[1.01] transition-transform duration-500">
+            <h4 class="font-oswald text-2xl md:text-3xl lg:text-[2.2rem] text-white leading-snug uppercase tracking-wider font-extrabold">
+                CAPTURING THE MOST POWERFUL <span class="text-gold font-extrabold text-glow">EMOTIONS</span>, <br>
+                IN THEIR <span class="text-gold font-extrabold font-oswald text-glow">HIGHEST FIDELITY</span> is no simple task...
+            </h4>
+        </div>
+    </section>
+
+    <!-- Image Section 2: Father & Baby (Arched Overlap Trick) - Adjusted bg-position to center 12% to show the full head of the baby -->
+    <section class="arch-curve-top w-full h-[85vh] md:h-[100vh] z-20 flex items-end justify-center pb-[12vw] p-0 m-0 border-0 overflow-hidden relative">
+        
+        <!-- Isolated Background Layer with natural styling (brightness filter removed) -->
+        <div class="absolute inset-0 bg-cover bg-no-repeat" 
+             style="background-image: url('images/quote-baby.jpg'); background-position: center 12%; background-attachment: scroll;"
+             onerror="this.src='https://placehold.co/1920x1080/222/fff?text=Father+Baby+Session+Section'">
+        </div>
+        
+        <!-- Restored dark solid gradient at the bottom to eliminate light/gray corner gaps inside the arch overlapping the footer -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/95"></div>
+        
+        <!-- Floating Quote Box 2 (Border removed) -->
+        <div class="relative z-30 w-[90%] max-w-3xl bg-black/90 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-3xl text-center transform hover:scale-[1.01] transition-transform duration-500">
+            <h4 class="font-oswald text-2xl md:text-3xl lg:text-[2.2rem] text-white leading-snug uppercase tracking-wider font-extrabold">
+                ...BUT WITH DEEP PASSION AND A DRIVE FOR <br>
+                <span class="text-gold font-extrabold text-glow">PRECISION</span>, WE MAKE IT HAPPEN!
+            </h4>
+        </div>
+    </section>
+
+    <!-- Footer section with another curve trick top -->
+    <footer id="contact" class="arch-curve-top bg-black w-full pb-12 pt-20 md:pt-32 relative z-35 p-0 m-0 border-0">
+        <div class="container mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center md:items-start justify-between gap-16">
+            
+            <!-- Left Side Content: Inquiry & Action -->
+            <div class="w-full md:w-5/12 flex flex-col items-center md:items-start text-center md:text-left pt-6">
+                <h3 class="font-oswald text-3xl md:text-5xl uppercase mb-6 tracking-wider text-white font-extrabold">WHETHER IT'S...</h3>
+                <p class="font-sans text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-md font-light">
+                    Quick headshots for social media, capturing precious family moments, or a custom creative session to express your truest self.<br><br>
+                    <span class="text-white font-medium">Dupremium Creative™</span> is dedicated to providing <span class="text-gold font-extrabold">beyond imaginable</span> results.<br><br>
+                    Contact us today and we'll capture memories that last beyond a lifetime!
+                </p>
+                <a href="mailto:contact@dupremium.com" 
+                   class="font-oswald uppercase tracking-widest text-sm text-gold border-2 border-gold px-12 py-4 hover:bg-gold hover:text-black transition-all duration-300 rounded-sm inline-block shadow-lg active:scale-95 font-extrabold">
+                    CONTACT
+                </a>
+            </div>
+            
+            <!-- Right Side Content: Squircle Profile Box with Overlaid Gold 3D Logo (Border removed) -->
+            <div class="w-full md:w-7/12 flex justify-center md:justify-end">
+                <div class="relative w-full max-w-[380px] md:max-w-[450px] aspect-square rounded-[3.5rem] md:rounded-[4.5rem] overflow-hidden shadow-2xl group">
+                    <img src="images/photographer-profile.jpg" 
+                         alt="Photographer Portrait" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                         onerror="this.onerror=null; this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/5b10053d-4a59-4a22-befa-340598c929d5/Portrait1x1.jpg?format=1500w'">
+                    
+                    <!-- Gradient overlay matching footer video bottom layout -->
+                    <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    
+                    <!-- Overlaid Brand Signature Badge (Replaced with official 3D Gold Logo Image) -->
+                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-[70%] md:w-[65%] flex justify-center select-none">
+                        <img src="images/Dupremium_Creative_Logo_Mk3_3D_Gold.png?format=1500w" 
+                             alt="Dupremium Creative™ 3D Gold Logo" 
+                             class="w-full h-auto drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] filter brightness-[1.05]"
+                             onerror="this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/098b2fcf-041b-4fcb-9175-92b0c1b24756/Dupremium_Creative_Logo_Mk3_3D_Gold.png?format=1500w'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar consisting of copyright, wax seal, contact and social anchors (Thicker Top border) -->
+        <div class="container mx-auto px-6 mt-24 md:mt-32 border-t-2 border-gold/30 pt-10 pb-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            
+            <!-- Left Corner Circular Badge Logo -->
+            <a href="mailto:contact@dupremium.com" class="flex items-center gap-3 group" aria-label="Home">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden">
+                    <img src="images/Dupremium-Texas-Mk3.png" 
+                         alt="Dupremium Signet Mk3" 
+                         class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                         onerror="this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/63992161-16e6-4417-92d2-ff64d07504e9/Dupremium+Signet+Mk3.png?format=500w'">
+                </div>
+                <span class="font-oswald text-xs uppercase tracking-widest text-gray-500 group-hover:text-gold transition-colors duration-300 font-extrabold">Contact</span>
+            </a>
+            
+            <!-- Centered Trademark Copyright Disclaimer -->
+            <p class="font-oswald text-xs md:text-sm text-gray-500 uppercase tracking-[0.2em] text-center select-none font-extrabold">
+                Copyright © 2022 - DUPREMIUM CREATIVE. ALL RIGHTS RESERVED
+            </p>
+            
+            <!-- Right Instagram Seal Anchor -->
+            <a href="https://www.instagram.com/dupremiumcreative/" target="_blank" class="flex items-center gap-3 group" aria-label="Instagram Page">
+                <span class="font-oswald text-xs uppercase tracking-widest text-gray-500 group-hover:text-gold transition-colors duration-300 font-extrabold">Instagram</span>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden">
+                    <img src="images/Dupremium-Signet-Mk3.png" 
+                         alt="Dupremium Signet Mk3 No Outline" 
+                         class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                         onerror="this.src='https://images.squarespace-cdn.com/content/v1/62d8b0ad41d7b34645c3eb80/ea86c434-b5b5-48cb-8075-7c91c7128ce0/Dupremium+Signet+Mk3_No+Outline.png?format=500w'">
+                </div>
+            </a>
+            
+        </div>
+    </footer>
+
+    <!-- Client-side Interactive Functionality Scripts -->
+    <script>
+        // Scroll listener to add high-fidelity parallax scale highlights
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const heroImg = document.getElementById('heroImage');
+            if(heroImg) {
+                heroImg.style.transform = `scale(${1.05 + scrollPos * 0.0001}) translateY(${scrollPos * 0.05}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
